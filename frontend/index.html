@@ -1,0 +1,50 @@
+<!doctype html>
+<html ng-app="app">
+	<head>
+	
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
+		<script src="app.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="frontend/style.css">
+		
+		<title>Manufacturing PDFs</title>
+	</head>
+	
+	<body class = "main">
+		<h5>Search<span><input class="form-control row col-md-4" type="text" ng-model="search.$"></input></span></h5><br><br>
+		<div ng-controller="HomeCtrl">     	
+			<table class="table table-striped">
+				<thead>
+				  <tr>
+					<th>Project Number</th>
+					<th>Release Number</th>
+					<th>Part Number</th>
+					<th>Description</th>
+					<th>Quantity</th>
+					<th>1st Process</th>
+					<th>2nd Process</th>
+					<th>Finish</th>
+					<th>Type ID</th>
+					<th>Open PDF</th>
+				  </tr>
+				</thead>
+				
+				<tbody>
+					<tr ng-repeat = 'x in parts | filter:search:strict'>
+						<td>{{x.projectNumber}}</td>
+						<td>{{x.releaseNumber}}</td>
+						<td>{{x.partNumber}}</td>
+						<td>{{x.description}}</td>
+						<td>{{x.quantity}}</td>
+						<td>{{x.routing01}}</td>
+						<td>{{x.routing02}}
+						<td>{{x.finish}}</td>
+						<td>{{x.TypeID}}</td>
+						<td><button><a href='file:///P:\Projects - Orders\{{x.projectNumber}} {{x.projectName}}\{{x.projectNumber}} Manufacturing Released PDFs\{{x.partNumber}}.pdf'>Open PDF</a></button></td>
+					</tr>			
+				</tbody>	
+			</table>
+		</div>
+	</body>
+</html>
